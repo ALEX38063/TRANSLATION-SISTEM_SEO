@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Location {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  nameNom        String
+  namePrep       String
+  nameNomRu      String?
+  namePrepRu     String?
+  countryCode    String
+  localAuthority String
+  deliveryHours  String?
+  latitude       Float?
+  longitude      Float?
+  population     Int?
+  isActive       Boolean  @default(true)
+  orderCount     Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  reviews        Review[]
+}
+
+model Service {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  slugRu        String?  @unique
+  name          String
+  nameRu        String?
+  category      String
+  pricePerPage  Float
+  description   String?
+  descriptionRu String?
+  icon          String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  reviews       Review[]
+}
+
+model Review {
+  id         String    @id @default(cuid())
+  rating     Int       @default(5)
+  content    String
+  contentRu  String?
+  authorName String
+  authorCity String?
+  language   String    @default("en")
+  isVerified Boolean   @default(false)
+  isFeatured Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  locationId String?
+  location   Location? @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  serviceId  String?
+  service    Service?  @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+}
+
+model Faq {
+  id         String   @id @default(cuid())
+  question   String
+  questionRu String?
+  answer     String
+  answerRu   String?
+  category   String
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
