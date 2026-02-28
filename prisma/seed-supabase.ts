@@ -3,9 +3,17 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// Обязательно передаем переменные внутрь!
-const supabase = createClient(supabaseUrl!, supabaseKey!);
+// Проверка на наличие переменных, чтобы билд не упал с ошибкой
+if (!supabaseUrl || !supabaseKey) {
+    console.warn("Внимание: SUPABASE_URL или SUPABASE_SERVICE_ROLE_KEY не найдены в .env");
+}
 
+const supabase = createClient(
+    supabaseUrl || '',
+    supabaseKey || ''
+);
+
+// Далее ваш код с данными (locations и т.д.)
 // ================= ДАННЫЕ =================
 
 const locations = [
