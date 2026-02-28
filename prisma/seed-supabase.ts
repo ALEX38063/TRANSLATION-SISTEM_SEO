@@ -5,6 +5,8 @@ const supabase = createClient(
    const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 )
+// Обязательно передайте их в функцию!
+const supabase = createClient(supabaseUrl!, supabaseKey!);
 
 // ================= ДАННЫЕ =================
 
