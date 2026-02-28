@@ -67,12 +67,12 @@ const withPWA = withPWAInit({
       },
     },
     {
-      urlPattern: /\/(en|ru)\/.*/i,
+      urlPattern: /\/(en|ru|ua|de|fr|es)\/.*/i,
       handler: 'StaleWhileRevalidate',
       options: {
         cacheName: 'pages-cache',
         expiration: {
-          maxEntries: 100,
+          maxEntries: 200,
           maxAgeSeconds: 24 * 60 * 60, // 1 day
         },
       },
@@ -83,6 +83,7 @@ const withPWA = withPWAInit({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  turbopack: {},
 
   // Image optimization
   images: {
