@@ -1,17 +1,19 @@
 import { createClient } from '@supabase/supabase-js'
 
+// Берем данные из переменных окружения
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// Проверка на наличие переменных, чтобы билд не упал с ошибкой
+// Проверка: если данных нет, выводим ошибку в консоль
 if (!supabaseUrl || !supabaseKey) {
-    console.warn("Внимание: SUPABASE_URL или SUPABASE_SERVICE_ROLE_KEY не найдены в .env");
+    console.error("ОШИБКА: SUPABASE_URL или SUPABASE_SERVICE_ROLE_KEY не заданы в .env или настройках Vercel");
 }
 
-const supabase = createClient(
-    supabaseUrl || '',
-    supabaseKey || ''
-);
+// Создаем клиент, передавая переменные в аргументы
+const supabase = createClient(supabaseUrl || '', supabaseKey || '');
+
+
+
 
 // Далее ваш код с данными (locations и т.д.)
 // ================= ДАННЫЕ =================
