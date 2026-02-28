@@ -1,11 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Используйте Service Role Key для обхода RLS и возможности удаления
-const supabase = createClient(
-   const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-)
-// Обязательно передайте их в функцию!
+
+// Обязательно передаем переменные внутрь!
 const supabase = createClient(supabaseUrl!, supabaseKey!);
 
 // ================= ДАННЫЕ =================
