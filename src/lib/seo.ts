@@ -23,15 +23,27 @@ export function generateServiceCityMetadata({ location, service, lang }: PageSeo
     const serviceName = getLocalizedField(service, lang);
     const cityName = getLocalizedLocationName(location, lang);
     const cityPrep = getLocalizedLocationPrep(location, lang);
-    const description = getLocalizedDescription(service, lang);
 
-    const title = lang === 'ru'
-        ? `${serviceName} ${cityPrep} | ${SITE_NAME}`
-        : `${serviceName} ${cityPrep} | ${SITE_NAME}`;
+    const titleTemplates: Record<Locale, string> = {
+        en: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+        ru: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+        ua: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+        de: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+        fr: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+        es: `${serviceName} ${cityPrep} | ${SITE_NAME}`,
+    };
 
-    const metaDescription = lang === 'ru'
-        ? `${serviceName} ${cityPrep}. Профессиональный перевод документов. Рейтинг 5.0 в ${location.countryCode}. Быстрая доставка.`
-        : `${serviceName} ${cityPrep}. Official document translation. Rated 5.0 in ${location.countryCode}. Fast delivery available.`;
+    const descTemplates: Record<Locale, string> = {
+        en: `${serviceName} ${cityPrep}. Official document translation. Rated 5.0 in ${location.countryCode}. Fast delivery available.`,
+        ru: `${serviceName} ${cityPrep}. Профессиональный перевод документов. Рейтинг 5.0 в ${location.countryCode}. Быстрая доставка.`,
+        ua: `${serviceName} ${cityPrep}. Професійний переклад документів. Рейтинг 5.0 у ${location.countryCode}. Швидка доставка.`,
+        de: `${serviceName} ${cityPrep}. Professionelle Dokumentenübersetzung. Bewertung 5.0 in ${location.countryCode}. Schnelle Lieferung möglich.`,
+        fr: `${serviceName} ${cityPrep}. Traduction de documents professionnelle. Noté 5.0 en ${location.countryCode}. Livraison rapide disponible.`,
+        es: `${serviceName} ${cityPrep}. Traducción de documentos profesional. Calificación 5.0 en ${location.countryCode}. Entrega rápida disponible.`,
+    };
+
+    const title = titleTemplates[lang] || titleTemplates.en;
+    const metaDescription = descTemplates[lang] || descTemplates.en;
 
     // Generate alternate language URLs
     const alternates: Record<string, string> = {};
@@ -40,18 +52,25 @@ export function generateServiceCityMetadata({ location, service, lang }: PageSeo
         alternates[locale] = `${SITE_URL}/${locale}/${localizedSlug}-${location.slug}`;
     }
 
+    const keywords: Record<Locale, string> = {
+        en: `${serviceName}, translation ${cityPrep}, ${cityName} translation, certified translation`,
+        ru: `${serviceName}, перевод ${cityPrep}, ${cityName} перевод, нотариальный перевод`,
+        ua: `${serviceName}, переклад ${cityPrep}, ${cityName} переклад, нотаріальний переклад`,
+        de: `${serviceName}, Übersetzung ${cityPrep}, ${cityName} Übersetzung, beglaubigte Übersetzung`,
+        fr: `${serviceName}, traduction ${cityPrep}, ${cityName} traduction, traduction certifiée`,
+        es: `${serviceName}, traducción ${cityPrep}, ${cityName} traducción, traducción certificada`,
+    };
+
     return {
         title,
         description: metaDescription,
-        keywords: lang === 'ru'
-            ? `${serviceName}, перевод ${cityPrep}, ${cityName} перевод, нотариальный перевод`
-            : `${serviceName}, translation ${cityPrep}, ${cityName} translation, certified translation`,
+        keywords: keywords[lang] || keywords.en,
         openGraph: {
             title,
             description: metaDescription,
             url: alternates[lang],
             siteName: SITE_NAME,
-            locale: lang === 'ru' ? 'ru_RU' : 'en_GB',
+            locale: lang === 'en' ? 'en_GB' : `${lang}_${location.countryCode}`,
             type: 'website',
             images: [
                 {
@@ -86,31 +105,43 @@ export function generateServiceCityMetadata({ location, service, lang }: PageSeo
 }
 
 export function generateHomeMetadata(lang: Locale): Metadata {
-    const title = lang === 'ru'
-        ? `Профессиональный перевод документов | ${SITE_NAME}`
-        : `Professional Document Translation Services | ${SITE_NAME}`;
+    const titleTemplates: Record<Locale, string> = {
+        en: `Professional Document Translation Services | ${SITE_NAME}`,
+        ru: `Профессиональный перевод документов | ${SITE_NAME}`,
+        ua: `Професійний переклад документів | ${SITE_NAME}`,
+        de: `Professionelle Dokumentenübersetzung | ${SITE_NAME}`,
+        fr: `Services de traduction professionnelle | ${SITE_NAME}`,
+        es: `Servicios de traducción profesional | ${SITE_NAME}`,
+    };
 
-    const description = lang === 'ru'
-        ? 'Сертифицированный перевод документов. Нотариальный, юридический, медицинский перевод. Быстрая доставка по всему миру.'
-        : 'Certified document translation services. Legal, medical, and technical translation. Fast worldwide delivery.';
+    const descTemplates: Record<Locale, string> = {
+        en: 'Certified document translation services. Legal, medical, and technical translation. Fast worldwide delivery.',
+        ru: 'Сертифицированный перевод документов. Нотариальный, юридический, медицинский перевод. Быстрая доставка по всему миру.',
+        ua: 'Сертифікований переклад документів. Нотаріальний, юридичний, медичний переклад. Швидка доставка по всьому світу.',
+        de: 'Beglaubigte Dokumentenübersetzung. Juristische, medizinische und technische Übersetzung. Schnelle weltweite Lieferung.',
+        fr: 'Services de traduction certifiée. Traduction juridique, médicale et technique. Livraison rapide dans le monde entier.',
+        es: 'Servicios de traducción certificada. Traducción jurídica, médica y técnica. Entrega rápida en todo el mundo.',
+    };
+
+    const alternates: Record<string, string> = {};
+    for (const locale of i18n.locales) {
+        alternates[locale] = `${SITE_URL}/${locale}`;
+    }
 
     return {
-        title,
-        description,
+        title: titleTemplates[lang] || titleTemplates.en,
+        description: descTemplates[lang] || descTemplates.en,
         openGraph: {
-            title,
-            description,
+            title: titleTemplates[lang] || titleTemplates.en,
+            description: descTemplates[lang] || descTemplates.en,
             url: `${SITE_URL}/${lang}`,
             siteName: SITE_NAME,
-            locale: lang === 'ru' ? 'ru_RU' : 'en_GB',
+            locale: lang === 'en' ? 'en_GB' : `${lang}_${lang.toUpperCase()}`,
             type: 'website',
         },
         alternates: {
             canonical: `${SITE_URL}/${lang}`,
-            languages: {
-                en: `${SITE_URL}/en`,
-                ru: `${SITE_URL}/ru`,
-            },
+            languages: alternates,
         },
     };
 }

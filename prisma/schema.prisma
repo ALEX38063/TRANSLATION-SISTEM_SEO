@@ -14,16 +14,24 @@ model Location {
   namePrep       String
   nameNomRu      String?
   namePrepRu     String?
+  nameNomUa      String?
+  namePrepUa     String?
+  nameNomDe      String?
+  namePrepDe     String?
+  nameNomFr      String?
+  namePrepFr     String?
+  nameNomEs      String?
+  namePrepEs     String?
   countryCode    String
-  localAuthority String
+  localAuthority String?
   deliveryHours  String?
   latitude       Float?
   longitude      Float?
   population     Int?
   isActive       Boolean  @default(true)
   orderCount     Int      @default(0)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt DateTime @default(now())
+updatedAt DateTime @default(now()) @updatedAt
   reviews        Review[]
 }
 
@@ -31,12 +39,24 @@ model Service {
   id            String   @id @default(cuid())
   slug          String   @unique
   slugRu        String?  @unique
+  slugUa        String?  @unique
+  slugDe        String?  @unique
+  slugFr        String?  @unique
+  slugEs        String?  @unique
   name          String
   nameRu        String?
+  nameUa        String?
+  nameDe        String?
+  nameFr        String?
+  nameEs        String?
   category      String
   pricePerPage  Float
   description   String?
   descriptionRu String?
+  descriptionUa String?
+  descriptionDe String?
+  descriptionFr String?
+  descriptionEs String?
   icon          String?
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
@@ -48,6 +68,10 @@ model Review {
   rating     Int       @default(5)
   content    String
   contentRu  String?
+  contentUa  String?
+  contentDe  String?
+  contentFr  String?
+  contentEs  String?
   authorName String
   authorCity String?
   language   String    @default("en")
@@ -64,8 +88,16 @@ model Faq {
   id         String   @id @default(cuid())
   question   String
   questionRu String?
+  questionUa String?
+  questionDe String?
+  questionFr String?
+  questionEs String?
   answer     String
   answerRu   String?
+  answerUa   String?
+  answerDe   String?
+  answerFr   String?
+  answerEs   String?
   category   String
   sortOrder  Int      @default(0)
   isActive   Boolean  @default(true)

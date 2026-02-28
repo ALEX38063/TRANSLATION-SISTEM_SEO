@@ -1,3 +1,6 @@
+// Додайте цей рядок на початку файлу
+export const revalidate = 60; // сайт буде перевіряти базу на наявність нових даних кожні 60 секунд
+
 export const dynamic = 'force-dynamic';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
