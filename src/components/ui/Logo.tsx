@@ -29,12 +29,12 @@ export function Logo({ size = 'md', showText = true, className }: LogoProps) {
                 {/* Gradient definitions */}
                 <defs>
                     <linearGradient id="logoGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#667eea" />
-                        <stop offset="100%" stopColor="#764ba2" />
+                        <stop offset="0%" stopColor="#22c55e" />
+                        <stop offset="100%" stopColor="#16a34a" />
                     </linearGradient>
                     <linearGradient id="logoGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#f093fb" />
-                        <stop offset="100%" stopColor="#f5576c" />
+                        <stop offset="0%" stopColor="#4ade80" />
+                        <stop offset="100%" stopColor="#059669" />
                     </linearGradient>
                     <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur stdDeviation="2" result="coloredBlur" />

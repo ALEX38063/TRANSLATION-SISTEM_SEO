@@ -29,8 +29,8 @@ export function Hero({ location, service, lang }: HeroProps) {
         <section className="relative min-h-[90vh] flex items-center pt-20">
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+                <div className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-emerald-600/25 to-green-500/20 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
             </div>
 
             <div className="container relative z-10">

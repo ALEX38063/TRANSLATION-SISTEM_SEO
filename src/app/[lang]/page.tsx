@@ -57,8 +57,8 @@ export default async function LangHomePage({ params }: LangPageProps) {
             <section className="relative min-h-[90vh] flex items-center pt-20">
                 {/* Animated background */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" />
-                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+                    <div className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-emerald-600/25 to-green-500/20 rounded-full blur-3xl animate-float" />
+                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
                 </div>
 
                 <div className="container relative z-10">
@@ -113,8 +113,8 @@ export default async function LangHomePage({ params }: LangPageProps) {
                                     className={`animate-fade-in-up stagger-${(index % 5) + 1}`}
                                     padding="lg"
                                 >
-                                    <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-                                        <Icon className="w-7 h-7 text-purple-400" />
+                                    <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-700/20 flex items-center justify-center">
+                                        <Icon className="w-7 h-7 text-emerald-400" />
                                     </div>
                                     <h3 className="text-xl font-semibold text-white mb-2">{serviceName}</h3>
                                     <p className="text-white/60 text-sm mb-4 line-clamp-2">
@@ -127,7 +127,7 @@ export default async function LangHomePage({ params }: LangPageProps) {
                                         </span>
                                         <Link
                                             href={`/${locale}/${getLocalizedSlug(service, locale)}-london`}
-                                            className="inline-flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 transition-colors"
+                                            className="inline-flex items-center gap-1 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
                                         >
                                             {t.learnMore}
                                             <ArrowRight className="w-4 h-4" />

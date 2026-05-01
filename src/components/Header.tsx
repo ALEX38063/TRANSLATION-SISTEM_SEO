@@ -95,7 +95,7 @@ export function Header({ lang, currentPath = '' }: HeaderProps) {
                         </button>
 
                         {isLangOpen && (
-                            <div className="absolute right-0 mt-2 w-36 rounded-xl bg-[rgba(12,20,69,0.98)] backdrop-blur-xl border border-white/10 shadow-2xl z-50 overflow-hidden">
+                            <div className="absolute right-0 mt-2 w-36 rounded-xl bg-[rgba(2,26,10,0.98)] backdrop-blur-xl border border-emerald-500/20 shadow-2xl z-50 overflow-hidden">
                                 {/* Current language */}
                                 <div className="px-3 py-2 flex items-center gap-2 bg-white/10 cursor-default">
                                     <span>{langLabels[lang].flag}</span>
@@ -142,7 +142,7 @@ export function Header({ lang, currentPath = '' }: HeaderProps) {
 
             {/* Mobile menu */}
             {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-[rgba(12,20,69,0.98)] backdrop-blur-xl border-b border-white/10">
+                <div className="md:hidden absolute top-full left-0 right-0 bg-[rgba(2,26,10,0.98)] backdrop-blur-xl border-b border-emerald-500/20">
                     <nav className="container py-6 flex flex-col gap-4">
                         {navLinks.map((link) => (
                             <Link

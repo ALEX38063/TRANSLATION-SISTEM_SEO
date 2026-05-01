@@ -25,7 +25,7 @@ export function TrustBlocks({ location, lang }: TrustBlocksProps) {
             icon: Clock,
             value: location.deliveryHours || '24h',
             label: lang === 'ru' ? 'Быстрая доставка' : 'Fast delivery',
-            color: 'from-blue-400 to-cyan-500',
+            color: 'from-emerald-400 to-teal-600',
         },
         {
             icon: Award,
@@ -37,7 +37,7 @@ export function TrustBlocks({ location, lang }: TrustBlocksProps) {
             icon: Users,
             value: '10,000+',
             label: lang === 'ru' ? 'Довольных клиентов' : 'Happy clients',
-            color: 'from-purple-400 to-pink-500',
+            color: 'from-green-400 to-emerald-700',
         },
     ];
 

@@ -42,7 +42,7 @@ export function Footer({ lang }: FooterProps) {
         ];
 
     return (
-        <footer className="bg-[rgba(12,20,69,0.9)] border-t border-white/10">
+        <footer className="bg-[rgba(2,26,10,0.92)] border-t border-emerald-500/20">
             <div className="container py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand */}
