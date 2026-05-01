@@ -13,6 +13,9 @@ interface LangPageProps {
     params: Promise<{ lang: string }>;
 }
 
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
     return i18n.locales.map((lang) => ({ lang }));
 }
