@@ -40,10 +40,10 @@ export function Logo({ size = 'md', showText = true, className }: LogoProps) {
                             'font-bold bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent leading-tight'
                         )}
                     >
-                        Translation
+                        ProfIT
                     </span>
                     <span className="text-xs font-medium text-emerald-600/80 uppercase tracking-wider">
-                        Center
+                        Translation Center
                     </span>
                 </div>
             )}
